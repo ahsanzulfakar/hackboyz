@@ -39,16 +39,16 @@ class NavBarWidget extends StatelessWidget {
                 ),
                 SizedBox(width: 30.w),
                 TextButton(
-                  child: Text("Training", style: TextStyle(fontSize: 20.sp, color: Colors.black),),
+                  child: Text("Project summary", style: TextStyle(fontSize: 20.sp, color: Colors.black),),
                   onPressed: (){
-                    Navigator.pushNamed(context, '/maintraining');
+                    Navigator.pushNamed(context, '/projectsummary');
                   },
                 ),
                 SizedBox(width: 30.w),
                 TextButton(
-                  child: Text("Handover", style: TextStyle(fontSize: 20.sp, color: Colors.black),),
+                  child: Text("Employee", style: TextStyle(fontSize: 20.sp, color: Colors.black),),
                   onPressed: (){
-                    Navigator.pushNamed(context, '/mainhandover');
+                    Navigator.pushNamed(context, '/employeesummary');
                   },
                 ),
                 SizedBox(width: 30.w),

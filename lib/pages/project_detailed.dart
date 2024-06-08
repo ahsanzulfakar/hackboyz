@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'chatbot.dart'; // Ensure the import path is correct
 
 class ProjectDetailed extends StatelessWidget {
   const ProjectDetailed({super.key});
@@ -13,24 +14,30 @@ class ProjectDetailed extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Project Controlling Dashboard'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildHeaderSection(),
-              const SizedBox(height: 16),
-              _buildSummarySection(colorScheme),
-              const SizedBox(height: 16),
-              _buildTaskStatusSection(colorScheme),
-              const SizedBox(height: 16),
-              _buildTimeSheetSection(colorScheme),
-              const SizedBox(height: 16),
-              _buildPlannedVsActualSection(colorScheme),
-            ],
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildHeaderSection(),
+                  const SizedBox(height: 16),
+                  _buildSummarySection(colorScheme),
+                  const SizedBox(height: 16),
+                  _buildTaskStatusSection(colorScheme),
+                  const SizedBox(height: 16),
+                  _buildTimeSheetSection(colorScheme),
+                  const SizedBox(height: 16),
+                  _buildPlannedVsActualSection(colorScheme),
+                ],
+              ),
+            ),
           ),
-        ),
+          // Add the ChatBot widget
+          const ChatBot(),
+        ],
       ),
     );
   }

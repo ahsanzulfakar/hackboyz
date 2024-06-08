@@ -54,35 +54,35 @@ class _ProjectSummaryState extends State<ProjectSummary> {
                       children: const [
                         ProjectCard(
                           title: 'Tech Innovators',
-                          members: ['images/member1.jpg', 'images/member1.jpg'],
+                          members: ['images/picture1.jpg', 'images/profile2.jpg'],
                           status: 'In progress',
                           progress: 70,
                           targetDate: 'Jan 15',
                         ),
                         ProjectCard(
                           title: 'Green Energy Initiative',
-                          members: ['images/member1.jpg'],
+                          members: ['images/profile3.jpg'],
                           status: 'In progress',
                           progress: 40,
                           targetDate: 'Feb 02',
                         ),
                         ProjectCard(
-                          title: 'Health & Wellness App',
-                          members: ['images/member1.jpg', 'images/member1.jpg'],
+                          title: 'Health & Wellness Apssssp',
+                          members: ['images/picture1.jpg', 'images/profile55.jpg'],
                           status: 'Backlog',
                           progress: 20,
                           targetDate: 'Mar 10',
                         ),
                         ProjectCard(
                           title: 'Community Outreach',
-                          members: ['images/member1.jpg', 'images/member1.jpg', 'images/member1.jpg', 'images/member1.jpg'],
+                          members: ['images/profile3.jpg', 'images/picture1.jpg', 'images/profile4.jpg', 'images/profile55.jpg'],
                           status: 'In progress',
                           progress: 85,
                           targetDate: 'Apr 05',
                         ),
                         ProjectCard(
                           title: 'Educational Platform',
-                          members: ['images/member1.jpg'],
+                          members: ['images/profile2.jpg'],
                           status: 'Backlog',
                           progress: 10,
                           targetDate: 'May 20',
@@ -156,7 +156,7 @@ class ProjectCard extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 3,
+              flex: 3, // Use the same flex value for consistent alignment
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -182,47 +182,56 @@ class ProjectCard extends StatelessWidget {
 
 class CustomProgressBar extends StatelessWidget {
   final int progress;
+  static const double maxWidth = 200.0; // Set a fixed width for the progress bar
 
   const CustomProgressBar({super.key, required this.progress});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          width: double.infinity,
-          height: 20.0,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.0),
-            border: Border.all(color: Colors.grey),
-          ),
+    Color getProgressColor(int progress) {
+      if (progress < 30) {
+        return Colors.red;
+      } else if (progress < 70) {
+        return Colors.yellow;
+      } else {
+        return Colors.green;
+      }
+    }
+
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+        width: maxWidth, // Use the fixed width for the progress bar container
+        height: 15.0,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12.0),
+          color: Colors.grey[300],
         ),
-        Container(
-          width: (progress / 100) * MediaQuery.of(context).size.width,
-          height: 20.0,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.0),
-            gradient: const LinearGradient(
-              colors: [Colors.red, Colors.yellow, Colors.green],
-              stops: [0.0, 0.5, 1.0],
+        child: Stack(
+          children: [
+            Container(
+              height: 15.0,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.0),
+                color: getProgressColor(progress),
+              ),
+              width: (progress / 100) * maxWidth, // Adjust the width based on progress and maxWidth
             ),
-          ),
-        ),
-        Align(
-          alignment: Alignment.center,
-          child: Text(
-            '$progress%',
-            style: const TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
+            Center(
+              child: Text(
+                '$progress%',
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
-
 
 class NavBarWidget extends StatelessWidget {
   const NavBarWidget({super.key});
@@ -268,21 +277,21 @@ class NavBarWidget extends StatelessWidget {
                 SizedBox(width: 30.w),
                 TextButton(
                   child: Text(
-                    "Training",
+                    "Project Summary",
                     style: TextStyle(fontSize: 20.sp, color: Colors.black),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/maintraining');
+                    Navigator.pushNamed(context, '/projectsummary');
                   },
                 ),
                 SizedBox(width: 30.w),
                 TextButton(
                   child: Text(
-                    "Handover",
+                    "Employee summary",
                     style: TextStyle(fontSize: 20.sp, color: Colors.black),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/mainhandover');
+                    Navigator.pushNamed(context, '/employeesummary');
                   },
                 ),
                 SizedBox(width: 30.w),

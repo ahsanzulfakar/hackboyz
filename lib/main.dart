@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hackboys_app/homepage.dart';
+import 'package:hackboys_app/pages/employeesummary.dart';
 import 'package:hackboys_app/pages/main_training.dart';
 import 'package:hackboys_app/pages/projectsummary.dart';
 
@@ -22,10 +23,12 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           initialRoute: '/projectsummary',
           routes: {
-            '/homepage': (context) => MainTraining(),
-            '/maintraining': (context) => MainTraining(),
-            '/mainhandover': (context) => MainTraining(),
+            '/homepage': (context) => const MainTraining(),
+            '/maintraining': (context) => const MainTraining(),
+            '/mainhandover': (context) => const MainTraining(),
             '/projectsummary': (context) => const ProjectSummary(),
+            '/employeesummary': (context) => const EmployeeSummary(),
+            '/chatbot': (context) => const EmployeeSummary(),
           },
         ),
     );
